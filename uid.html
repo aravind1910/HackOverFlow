@@ -1,0 +1,166 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="webber.css">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+        <script src="firebase.js"></script>
+    </head>
+    <body>
+        <div style="text-align: center; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStj05BGI7N0Bt9nWUA4IlZkQ1RpICEZoey_RdQm9yBOLoi8n-78g&s');">
+            <img style="opacity: 0.8;" src="https://bit.ly/365RsO1" width="450" height="150">
+        </div>
+    
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:green; color:white">
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="webber.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schemes.html">Schemes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mitigation.html">Mitigation Measures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Unit Locator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cuisine.html">Cuisines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Trace Your Goods</a>
+                    </li>
+                    <li class="nav-item">
+                      <button onclick="document.getElementById('id01').style.display='block'" style=" padding-top: 5px;width:auto;height: 2px; margin:0; background-color:transparent; color : rgb(180, 178, 178);">Login|Signup</button>
+                    </li>  
+                    <li>
+                      <input  style=" margin-left: 20px; border-radius: 5px; width: 170px; height: 30px;"type="text" placeholder="Search here">
+                      <input style="border-radius:5px; width:100px; height:30px;" type="button" value="Search">
+                    </li>         
+                  </ul>
+                  
+                 </div>
+              </nav>
+              <div id="id01" class="modal">
+                <div style="width: 50%; margin: auto; border-radius: 30px ; height: 90%;" class="modal-content animate" >
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" style="margin-right: 20px;"class="close" title="Close Modal">&times;</span>
+                    <img src="https://bit.ly/37euV2T" alt="Avatar" class="avatar" width="80" height="80">
+                  </div>
+              
+                  <div style="width:50%" class="container">
+                    <label for="email" style="color:green"><b>Email ID</b></label><br>
+                    <input style="margin-bottom: 10px;width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="email" type="email" placeholder="Enter email" name="email" required>
+                    <br>
+                    <label for="passwd" style="color:green"><b>Password</b></label><br>
+                    <input style="width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="password" type="password" placeholder="Enter Password" name="passwd" required>
+                      
+                    <input id="signin" style="border-radius: 7px; margin-top: 30px; height:50px; width: 100%; background-color: green;" onclick="signin()" type="submit" value="Login"> <br>
+            
+                    <input id="signup" type="submit"  style="border-radius: 7px; margin-left: 20px;margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signup() value="signup">
+                    <input id="signout" type="submit" style="border-radius: 7px; margin-left:20px; margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signout() value="signout">
+                    <br><br>
+                    <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                  </div>
+              
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                  </div>
+                </div>
+              </div>
+              <div class="container" style="margin-top: 20px;">
+                <div class="row">
+                  <div class="col-sm" style=" padding: 20px; background-color: green; height: 500px; margin-right: 30px; border-radius: 10px; ">
+                        <h3> Enter Transaction Reference : </h3>
+                        <input style="border-radius: 10px; margin: 10px 27%; padding-left: 20px; outline:none;" name="tranid" type="number" ><br>
+                        <input class="tranid" onclick="namify()" type="submit" value="Generate Tracking ID">
+                        <div id="u1a1" style="display: none;background-color: azure; padding: 10px; border-radius: 5px;">
+                        <span id="u1"></span>
+                        <br>
+                        <span id="a1"></span>
+                        <br>
+                        <span id="u2"></span>
+                        <br>
+                        <span id="a2"></span>
+                        </div>
+                        <br>
+                  </div>
+                  <div class="col-sm" style="background-color: green; height: 100%; margin-right: 30px; border-radius: 10px; ">
+                       <div style="display: none;" id="track">
+                        <div class="container">
+                            <div class="page-header">
+                                <h1 id="timeline">Produce Track  ID #5E01694I351 </h1>
+                            </div>
+                            <ul class="timeline">
+                                <li>
+                                  <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                                  <div style="background-color: aliceblue" class="timeline-panel">
+                                    <div class="timeline-heading">
+                                      <h4 class="timeline-title">Gandhigram Godown</h4>
+                                      <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 72 hours ago </small></p>
+                                    </div>
+                                    <div class="timeline-body">
+                                      <p>Sileru, East Godavari, Andhra Pradesh.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                  <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+                                  <div  style="background-color: aliceblue" class= "timeline-panel">
+                                    <div class="timeline-heading">
+                                      <h4 class="timeline-title">Shakti Food Processing Industries Limited</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                      <p>Visalakshi Nagar, Srikakulam, Andhra Pradesh</p>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+                                  <div style="background-color: aliceblue" class="timeline-panel">
+                                    <div class="timeline-heading">
+                                      <h4 class="timeline-title">Pavan Distributers</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                      <p>Panigrahipuram, Vijayanagaram, Andhra Pradesh.</p>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                  <div  style="background-color: aliceblue" class="timeline-panel">
+                                    <div class="timeline-heading">
+                                      <h4 class="timeline-title">More Departmental Stores</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                      <p>Gavarapalem, Anakapalli, Visakhapatnam, Andhra Pradesh</p>
+                                    </div>
+                                  </div>
+                                </li>
+                            </ul>
+                        </div>
+                       </div>
+                  </div>
+                </div>
+              </div>
+        <script src="webber.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
