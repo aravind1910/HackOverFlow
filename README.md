@@ -1,0 +1,2 @@
+# HackOverFlow
+This is a project for Smart India Hackathon. We made a web application for the Ministry of Food Processing, Govt of India. This web app caters to 5 major requirements: 1. Information regarding various schemes by the ministry for entrepreneurs 2. Mitigation measures for food wastage 3. Predicting best locations to set up food processing industries 4. Information regarding various cuisine and culinary types all over India and 5. Tracking the food produce form Farm to Fork.
