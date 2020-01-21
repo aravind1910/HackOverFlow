@@ -1,0 +1,165 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="webber.css">
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+        <script src="firebase.js"></script>
+        <style>
+          p,ul {
+            margin-left: 50px;
+            margin-right: 50px;
+          }
+        </style>
+    </head>
+    <body>
+        <div style="text-align: center; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStj05BGI7N0Bt9nWUA4IlZkQ1RpICEZoey_RdQm9yBOLoi8n-78g&s');">
+            <img style="opacity: 0.8;" src="https://bit.ly/365RsO1" width="450" height="150">
+        </div>
+    
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:green; color:white">
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="webber.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Schemes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mitigation.html">Mitigation Measures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Unit Locator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cuisine.html">Cuisines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="uid.html">Trace Your Goods</a>
+                    </li>
+                    <li class="nav-item">
+                      <button onclick="document.getElementById('id01').style.display='block'" style=" padding-top: 5px;width:auto;height: 2px; margin:0; background-color:transparent; color : rgb(180, 178, 178);">Login|Signup</button>
+                    </li>  
+                    <li>
+                      <input  style=" margin-left: 20px; border-radius: 5px; width: 170px; height: 30px;"type="text" placeholder="Search here">
+                      <input style="border-radius:5px; width:100px; height:30px;" type="button" value="Search">
+                    </li>         
+                  </ul>
+                 </div>
+              </nav>
+              <div id="id01" class="modal">
+                <div style="width: 50%; margin: auto; border-radius: 30px ; height: 90%;" class="modal-content animate" >
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" style="margin-right: 20px;"class="close" title="Close Modal">&times;</span>
+                    <img src="https://bit.ly/37euV2T" alt="Avatar" class="avatar" width="80" height="80">
+                  </div>
+              
+                  <div style="width:50%" class="container">
+                    <label for="email" style="color:green"><b>Email ID</b></label><br>
+                    <input style="margin-bottom: 10px;width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="email" type="email" placeholder="Enter email" name="email" required>
+                    <br>
+                    <label for="passwd" style="color:green"><b>Password</b></label><br>
+                    <input style="width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="password" type="password" placeholder="Enter Password" name="passwd" required>
+                      
+                    <input id="signin" style="border-radius: 7px; margin-top: 30px; height:50px; width: 100%; background-color: green;" onclick="signin()" type="submit" value="Login"> <br>
+            
+                    <input id="signup" type="submit"  style="border-radius: 7px; margin-left: 20px;margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signup() value="signup">
+                    <input id="signout" type="submit" style="border-radius: 7px; margin-left:20px; margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signout() value="signout">
+                    <br><br>
+                    <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                  </div>
+              
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                  </div>
+                </div>
+              </div>
+              <div id="paragraph">
+                <h1 style="text-align: center; color: green; margin:30px auto"><b>Schemes Under Food Processing Industries</b></h1>
+<p>Food ecosystem in India offers colossal open doors for investments with stimulating development in the food retail sector, good financial strategies, and appealing monetary motivators.
+The Government of India through the Ministry of Food Processing Industries (MoFPI) is additionally finding a way to help interests in the food processing industry.
+The administration has authorized 42 Mega Food Parks (MFPs) to be set up in the nation under the Mega Food Park Scheme. Right now, 12 Mega Food Parks has turned out to be useful.
+100% FDI is allowed under the programmed course in Food preparing ventures.</p>
+<p>According to one of the estimated India’s present food processing industry is assessed at USD 130 Billion and anticipated that would pull in immense domestic and foreign investment.
+A portion of the key variables which are probably going to expand the demand for processed food and subsequently the food processing industry in the coming years are :</p>
+<ul>
+<li>India is a nation of over 1.25 billion population. With increasing middle class comprising a substantial disposable income, the domestic market offers 1.25 billion opportunities for the segment.</li><br>
+<li>Due to fast urbanization, food propensities are changing quickly towards value oriented foods. The change is complemented by the way that more than 65% of India’s populace is 35 or under, who are slanted to have processed food.</li><br>
+<li>According to an estimation, around 40 percent of aggregate food production is squandered because of the lack of facilities for transportation, processing, storage, and marketing.
+On the off chance that these lacks are tended to, there is a gigantic chance for the advancement of the sector.</li>
+</ul>
+<p>To take benefit of the above-described aspects, the Government has started the accompanying measures for the advancement of the food processing sector.</p>
+<ul>
+<br>
+<br>
+<div class="card-deck" style="margin-left: 50px; margin-right: 50px;">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Pradhan Mantri Kisan Sampada Yojana (PMKSY)</h5>
+      <p class="card-text">In August 2017, the CCEA gave its gesture for the PMKSY. It is an umbrella plan that consolidates different progressing plans like Mega Food Parks, Integrated Cold Chain, Value Addition Infrastructure,
+        Food Safety, and Quality Assurance Infrastructure, Infrastructure for Agro-processing Clusters, Creation of Backward and Forward Linkages and Creation and Expansion of Food Processing and Preservation Capacities.</p>
+      <a href="#" class="btn btn-primary" style="background-colour:orange;">Learn more</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Mega Food Parks Scheme</h5>
+      <p class="card-text">It goes for giving a component to interface rural generation to the market by uniting farmers, processors and retailers amplify value addition, limiting wastage, expanding income of farmers and creating employment opportunities especially in the rural sector.
+        A Mega Food Park involves a territory of at least 50 sections of land and works in a group constructed approach situated in light of a center and spokes model.
+      </p>
+      <a href="#" class="btn btn-primary" >Learn more</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Scheme of Cold Chain, Value Addition and Preservation Infrastructure</h5>
+      <p class="card-text"> The goal of the scheme is to give incorporated cool chain and conservation framework facilities, with no break, from the farm gate to the customer. It envelops pre-cooling facilities at production sites, reefer vans, mobile cooling units as well as value addition hubs.</p>
+      <a href="#" class="btn btn-primary" style="background-colour:orange;">Learn more</a>
+    </div>
+  </div>
+</div>
+<br><br>
+
+<div class="card-deck" style="margin-left: 50px; margin-right: 50px;">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Modernization of Abattoirs scheme</h5>
+      <p class="card-text">The major goal of the Scheme is a form of processing and preservation capacities and modernization and growth of obtainable food processing units with a vision to increase the level of processing, value addition leading to a diminution of wastage.</p>
+      <a href="#" class="btn btn-primary" style="background-colour:orange;">Learn more</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Make In India</h5>
+      <p class="card-text"> A portion of the Make In India campaign, the food processing sector was recognized as one of the 25 concentrated areas. Therefore, the policy, ecosystem has been refurbished to draw financial, technological and human resources into the zone.
+        Allowing 100% FDI via automatic direction into this sector is also an important footstep in this direction.
+      </p>
+      <a href="#" class="btn btn-primary" style="background-colour:orange;">Learn more</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Food Processing Fund</h5>
+      <p class="card-text"> A special fund in the NABARD worth INR 2,000 crore, chosen as the Food Processing Fund, was set up in the FY 2014-15 for offering reasonable credit for food processing units in Mega & Designated Food Parks.</p>
+      <a href="#" class="btn btn-primary" style="background-colour:orange;">Learn more</a>
+    </div>
+  </div>
+</div>
+                  
+        <script src="webber.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

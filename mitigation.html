@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="webber.css">
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+        <script src="firebase.js"></script>
+    </head>
+    <body>
+        <div style="text-align: center; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStj05BGI7N0Bt9nWUA4IlZkQ1RpICEZoey_RdQm9yBOLoi8n-78g&s');">
+            <img style="opacity: 0.8;" src="https://bit.ly/365RsO1" width="450" height="150">
+        </div>
+    
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:green; color:white">
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="webber.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schemes.html">Schemes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mitigation Measures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Unit Locator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cuisine.html">Cuisines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="uid.html">Trace Your Goods</a>
+                    </li>
+                    <li class="nav-item">
+                      <button onclick="document.getElementById('id01').style.display='block'" style=" padding-top: 5px;width:auto;height: 2px; margin:0; background-color:transparent; color : rgb(180, 178, 178);">Login|Signup</button>
+                    </li>  
+                    <li>
+                      <input  style=" margin-left: 20px; border-radius: 5px; width: 170px; height: 30px;"type="text" placeholder="Search here">
+                      <input style="border-radius:5px; width:100px; height:30px;" type="button" value="Search">
+                    </li>         
+                  </ul>
+                  
+                 </div>
+              </nav>
+              <div id="id01" class="modal">
+                <div style="width: 50%; margin: auto; border-radius: 30px ; height: 90%;" class="modal-content animate" >
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" style="margin-right: 20px;"class="close" title="Close Modal">&times;</span>
+                    <img src="https://bit.ly/37euV2T" alt="Avatar" class="avatar" width="80" height="80">
+                  </div>
+              
+                  <div style="width:50%" class="container">
+                    <label for="email" style="color:green"><b>Email ID</b></label><br>
+                    <input style="margin-bottom: 10px;width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="email" type="email" placeholder="Enter email" name="email" required>
+                    <br>
+                    <label for="passwd" style="color:green"><b>Password</b></label><br>
+                    <input style="width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="password" type="password" placeholder="Enter Password" name="passwd" required>
+                      
+                    <input id="signin" style="border-radius: 7px; margin-top: 30px; height:50px; width: 100%; background-color: green;" onclick="signin()" type="submit" value="Login"> <br>
+            
+                    <input id="signup" type="submit"  style="border-radius: 7px; margin-left: 20px;margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signup() value="signup">
+                    <input id="signout" type="submit" style="border-radius: 7px; margin-left:20px; margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signout() value="signout">
+                    <br><br>
+                    <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                  </div>
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:15px; margin-left: 30px; margin-right: 30px;">
+                <h1 style="text-align:center; font-size:50px; color:green"><b>Mitigation Measures</b></h1>
+              <p>
+                “Around the world some 1.3 billion tonnes of food waste is produced annually,” reports Peter Harrison. He states that this waste comes at “a direct economic cost of some $750 billion, according to a new report by the Food and Agriculture Organization of the United Nations (FAO).” [“Global Food Wastage – US$750 Billion Annually!!!” Above Capricorn, 16 September 2013] In past posts, I’ve discussed concerns that many analysts have raised about how difficult it is going to be to feed the burgeoning global population over the next forty to sixty years. There is no silver bullet solution for feeding the world. It will require the implementation of a number of strategies including increased crop yields, more efficient supply chains, and improved consumer behavior. Reducing food waste is one strategy that could have an immediate and significant impact; however, there is no one area (i.e., no single group, industry, or process) that can be singled out for special attention. The challenge spreads itself throughout the supply chain from the field to the consumer’s table. Harrison reports:
+               </p>
+               <p>
+                “According to the FAO, 54% of the world’s food waste occurs ‘upstream’ — during production, post-harvest handling and storage, while 46% happens ‘downstream,’ at the processing, distribution and consumption stages. As a general trend, developing countries were found to suffer greater losses during agricultural production, while food waste at the retail and consumer level tends to be higher in middle- and high-income regions — where it accounts for 31% to 39% of total wastage — than in low-income regions (4% to 16%). The report also found that the later a food product is lost along the chain, the greater the environmental consequences — as the environmental costs incurred during processing, transport, storage and cooking must be added to the initial production costs.”
+               </p>
+               <p>
+                Below is a brief discussion of what can be done both upstream and downstream to reduce food waste. The UNFAO “distinguishes between food loss and food waste. Food losses, which occur during the harvest, post-harvest and processing phase, are most important in developing countries, due to poor infrastructure, poor temperature management, low levels of technology and low investment in the food distribution systems, especially the cold chain. Food waste is more of a problem in industrialized and developed countries, like the USA and the UK, and are most often caused by retailers and consumers throwing perfectly edible foods into the trash.” [“Food waste or postharvest food losses?” Postharvest Education Foundation] I include both food loss and food waste as part of the “food wastage” challenge.
+               </p>
+              </div>
+          <div class="card mitigation">
+            <div class="card-header">
+              <b>Out of the Field</b>
+            </div>
+            <div class="card-body">
+              I want to begin this discussion about food waste with post-harvest activities. That doesn’t mean that food wastage doesn’t occur in the field (or in the orchard). Farmers, however, appreciate how much effort goes into raising each ear of corn or each piece of tree-ripened fruit. They know that each food item that spoils in the field or rots on the tree represents a monetary loss for them. So they work hard to prevent wastage and are always looking for better ways to harvest their crops and recoup their investments. According to John Manners Bell, Chief Executive Officer of Transport Intelligence, “Post-harvest food losses [are] a really major, major problem.” [“Role of logistics in Reducing Post-Harvest Food Losses in the Developing World,” Dustin Mattison’s Blog, 8 March 2013] Bell continues:
+
+“I think everyone realizes that feeding the world population is going to be a major issue over the coming decades. The world’s population has already reached seven billion, and we’re struggling to feed that number of mouths throughout the world. Some of the major population boom areas are in the developing world, such as in Africa and many parts of Asia. Really, to date, a lot of the focus has been on … production — production technology, food technologies — to help grow more food; but what people don’t realize is that probably somewhere between a third to half of food which is produced actually gets lost between the farmer and the final market. To my mind, that really is a criminal situation, because it’s really down to the logistics industries in the developing world to enable the goods to [get] to market and to get from market [to] the consumer. I think a lot more should be done to develop logistics systems to help with transport networks — warehousing, for example — which ensures that food actually makes it to the hungry people rather than spending more and more money on agricultural technologies, for example, which, at the end of the day, it produces more goods, but that means more goods actually perish or get lost before they reach the people they’re designed to.”
+
+              
+            </div>
+          </div>
+          <div class="card mitigation">
+            <div class="card-header">
+              <b>Manufacturing and Processing</b>
+            </div>
+            <div class="card-body">
+              Lindsey Jahn, Associate Editor of Food Manufacturing, asserts, “The amount of food waste generated by manufacturing facilities continues to be a concern.” [“Putting Waste to Work,” Food Manufacturing, October 2013] Fortunately, she reports, “The industry has shown great initiative in diverting its waste from the landfills and putting it to better use.” She explains:
+
+“A first-ever study of food waste data across the food manufacturing and retail sectors was recently issued by the Food Waste Reduction Alliance (FWRA), a cross-sector industry initiative led by the Grocery Manufacturers Association, the Food Marketing Institute and the National Restaurant Association. According to the report, 4.1 billion pounds of food waste were sent to landfills in 2011. While this seems like a large number, it represents only 8.5 percent of the 48.1 billion pounds of food waste generated across the manufacturing, retail and wholesale sectors. The study found that food manufacturers have taken particular interest in finding higher uses for their food waste, including donation or recycling. In fact, 94.6 percent of food waste generated by food processors was kept out of landfills. Seventy-three percent of processors’ food waste was used in animal feed, while another 700 million pounds of safe food were donated.”
+     </div>
+          </div>
+          <div class="card mitigation">
+            <div class="card-header">
+              <b>Packaging</b>
+            </div>
+            <div class="card-body">
+              One area that has received a lot of recent attention is food packaging. “Packaging has a vital role to play within the supply chain in minimizing food waste,” writes Anne Marie Mohan, Editor of Greener Package. [“Study points to packaging as a solution to food waste in supply chain,” Packaging World, 13 August 2013] One reason that food packaging has gained the limelight is that a recent Australian study concluded that packaging can play a major role in reducing food waste. RMIT Senior Research Fellow Dr. Karli Verghese, who led the study, told Mohan, “Packaging actually plays a critical role in protecting fresh produce and processed food in transit, in storage, at point of sale, and prior to consumption. In doing so, it helps deliver a wide range of functions while reducing food waste.” Richard Gray reports, “Plastic bags that can stop bread and cheese from going mouldy after just a few days have been developed by scientists. The technology, which uses chemicals that prevent bacteria and fungi from growing, allows food to last for longer. It could mean an end to throwing away supermarket bread after just a couple of days in the bread bin and cheese that remains mould free for weeks.” [“Food bags that can stop bread from going mouldy developed,” The Telegraph, 3 November 2013]   </div>
+          </div>
+        </div>
+        <div class="card mitigation">
+          <div class="card-header">
+            <b>Consumer Behavior</b>
+          </div>
+          <div class="card-body">
+            It should come as no surprise that consumers waste a lot of food. Sometimes an eater’s eyes are much bigger than his or her stomach and they end up leaving a lot of food on their plate. I like the attached poster, which Harrison included with his article. It succinctly states how consumers need to change their behavior if they are going to do their part in reducing food waste. 
+Manufacturers could also help consumers by eliminating some of the confusion created by “Sell by” and “Use by” dates. Dr. Londa Nwadike, an Extension Food Safety Specialist, believes that a lot of perfectly good food gets tossed because of confusion about dates printed on food packages. She reports that the “USDA does provide the following definitions for various terms used on food product labels”: 
+A certain amount of food waste is always going to be found at each stage of a food’s lifecycle; nevertheless, there remains a lot we can do to ensure that such waste is minimized. FAO director general, José Graziano da Silva concluded, “All of us — farmers and fishers; food processors and supermarkets; local and national governments; individual consumers — must make changes at every link of the human food chain to prevent food wastage from happening in the first place, and re-use or recycle it when we can’t.” Sounds like good advice. 
+          </div>
+      </div>
+        <script src="webber.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
