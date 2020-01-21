@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="webber.css">
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+        <script src="firebase.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <script src="https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/datamaps.none.js"></script>
+    </head>
+    <body>
+        <div style="text-align: center; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStj05BGI7N0Bt9nWUA4IlZkQ1RpICEZoey_RdQm9yBOLoi8n-78g&s');">
+            <img style="opacity: 0.8;" src="https://bit.ly/365RsO1" width="450" height="150">
+        </div>
+    
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:green; color:white">
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="webber.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schemes.html">Schemes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mitigation.html">Mitigation Measures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Unit Locator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cuisines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="uid.html">Trace Your Goods</a>
+                    </li>
+                    <li class="nav-item">
+                      <button onclick="document.getElementById('id01').style.display='block'" style=" padding-top: 5px;width:auto;height: 2px; margin:0; background-color:transparent; color : rgb(180, 178, 178);">Login|Signup</button>
+                    </li>  
+                    <li>
+                      <input  style=" margin-left: 20px; border-radius: 5px; width: 170px; height: 30px;"type="text" placeholder="Search here">
+                      <input style="border-radius:5px; width:100px; height:30px;" type="button" value="Search">
+                    </li>         
+                  </ul>
+                 </div>
+              </nav>
+              <div id="id01" class="modal">
+                <div style="width: 50%; margin: auto; border-radius: 30px ; height: 90%;" class="modal-content animate" >
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" style="margin-right: 20px;"class="close" title="Close Modal">&times;</span>
+                    <img src="https://bit.ly/37euV2T" alt="Avatar" class="avatar" width="80" height="80">
+                  </div>
+              
+                  <div style="width:50%" class="container">
+                    <label for="email" style="color:green"><b>Email ID</b></label><br>
+                    <input style="margin-bottom: 10px;width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="email" type="email" placeholder="Enter email" name="email" required>
+                    <br>
+                    <label for="passwd" style="color:green"><b>Password</b></label><br>
+                    <input style="width: 100% ; height: 50px; border-radius: 10px; outline: none; padding-left: 20px" id="password" type="password" placeholder="Enter Password" name="passwd" required>
+                      
+                    <input id="signin" style="border-radius: 7px; margin-top: 30px; height:50px; width: 100%; background-color: green;" onclick="signin()" type="submit" value="Login"> <br>
+            
+                    <input id="signup" type="submit"  style="border-radius: 7px; margin-left: 20px;margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signup() value="signup">
+                    <input id="signout" type="submit" style="border-radius: 7px; margin-left:20px; margin-top: 30px; height:50px; width: 40%; outline:none ; background-color: green; text-align:center; border : none;" onclick=signout() value="signout">
+                    <br><br>
+                    <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                  </div>
+              
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                  </div>
+                </div>
+              </div><br><br>
+              <br><br><br>
+              <div id="india" style="margin: auto; margin-bottom: 100px;border-radius: 20px; background-color: green; height : 600px; width: 800px; border: 10px;"></div>
+              <script>
+                  var bubble_map = new Datamap({
+                      element: document.getElementById('india'),
+                      scope: 'india',
+                      geographyConfig: {
+                          popupOnHover: true,
+                          highlightOnHover: true,
+                          borderColor: '#444',
+                          borderWidth: 0.5,
+                          dataUrl: 'https://gist.githubusercontent.com/puja31/83ae157ca646b6de6da4f0c3c00c880b/raw/d84c18f14450062f02c42773fa892eeddeab7f7d/m1.json'
+                          //dataJson: topoJsonData
+                      },
+                      fills: {
+                          'MAJOR': '#306596',
+                          'MEDIUM': '#0fa0fa',
+                          'MINOR': '#bada55',
+                          defaultFill: '#dddddd'
+                      },
+          
+                      setProjection: function (element) {
+                          var projection = d3.geo.mercator()
+                              .center([87, 25]) // always in [East Latitude, North Longitude]
+                              .scale(1000);
+                          var path = d3.geo.path().projection(projection);
+                          return { path: path, projection: projection };
+                      }
+                  });
+          
+                  let bubbles = [
+                      {
+                          centered: "MH",
+                          fillKey: "MAJOR",
+                          radius: 0,
+                          state: "Maharastra"
+          
+                      },
+                      {
+                          centered: "AP",
+                          fillKey: "MAJOR",
+                          radius: 0,
+                          state: "Andhra Pradesh"
+                      },
+                      {
+                          centered: "TN",
+                          fillKey: "MAJOR",
+                          radius: 0,
+                          state: "Tamil Nadu"
+                      },
+                      {
+                          centered: "WB",
+                          fillKey: "MEDIUM",
+                          radius: 0,
+                          state: "West Bengal"
+                      },
+                      {
+                          centered: "MP",
+                          fillKey: "MEDIUM",
+                          radius: 0,
+                          state: "Madhya Pradesh"
+                      },
+                      {
+                          centered: "UP",
+                          fillKey: "MINOR",
+                          radius: 0,
+                          state: "Uttar Pradesh"
+                      },
+                      {
+                          centered: "RJ",
+                          fillKey: "MINOR",
+                          radius: 0,
+                          state: "Rajasthan"
+                      }
+          
+                  ]
+                  // // ISO ID code for city or <state></state>
+                  setTimeout(() => { // only start drawing bubbles on the map when map has rendered completely.
+                      bubble_map.bubbles(bubbles, {
+                          popupTemplate: function (geo, data) {
+                              return `<div class="hoverinfo">city: ${data.state}, Slums: ${data.radius}%</div>`;
+                          }
+                      });
+                  }, 1000);
+              </script>
+                  
+        <script src="webber.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
